@@ -20,6 +20,6 @@ public class Flight implements Comparable<Flight> {
     }
 
     public boolean matches(String from, String to) {
-        return departure.equalsIgnoreCase(from) & arrival.equalsIgnoreCase(to);
+        return departure.equalsIgnoreCase(from) && arrival.equalsIgnoreCase(to);
     }
 }
