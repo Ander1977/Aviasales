@@ -1,16 +1,13 @@
-package ru.netology.manager;
+package ru.netology.repository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Flight;
-import ru.netology.repository.Repository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ManagerTest {
+class RepositoryTest {
     Repository repository = new Repository();
-    Manager manager = new Manager(repository);
-
     Flight khvSvo = new Flight(1, 18500, "KHV", "SVO", 420);
     Flight sipDme = new Flight(2, 5600, "SIP", "DME", 180);
     Flight svoSin = new Flight(3, 23500, "SVO", "SIN", 450);
@@ -29,17 +26,19 @@ class ManagerTest {
     }
 
     @Test
-    void shouldSearchIfFlightFind() {
-        Flight[] actual = manager.searchBy("KHV", "SVO");
-        Flight[] expected = new Flight[]{khvSvo, khvSvo2};
+    public void shouldFindAll() {
+        Flight[] actual = repository.findAll();
+        Flight[] expected = new Flight[]{sipDme, ledAaq, khvSvo, svoSin, dpsKhv, khvSvo2};
         assertArrayEquals(expected, actual);
+
     }
 
     @Test
-    void shouldSearchIfFlightNotFind() {
-        Flight[] actual = manager.searchBy("DME", "KHV");
-        Flight[] expected = new Flight[0];
+    public void shouldRemoveById() {
+        int idToRemove = 3;
+        repository.removeById(idToRemove);
+        Flight[] actual = repository.findAll();
+        Flight[] expected = new Flight[]{sipDme, ledAaq, khvSvo, dpsKhv, khvSvo2};
         assertArrayEquals(expected, actual);
     }
-
 }
