@@ -3,6 +3,7 @@ package ru.netology.manager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Flight;
+import ru.netology.domain.FlightByTimeAscComparator;
 import ru.netology.repository.Repository;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ManagerTest {
     Repository repository = new Repository();
     Manager manager = new Manager(repository);
+    FlightByTimeAscComparator comparator = new FlightByTimeAscComparator();
 
     Flight khvSvo = new Flight(1, 18500, "KHV", "SVO", 420);
     Flight sipDme = new Flight(2, 5600, "SIP", "DME", 180);
@@ -39,6 +41,13 @@ class ManagerTest {
     void shouldSearchIfFlightNotFind() {
         Flight[] actual = manager.searchBy("DME", "KHV");
         Flight[] expected = new Flight[0];
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldSearchFindAllCompar() {
+        Flight[] actual = manager.findAllCompar("KHV", "SVO", comparator);
+        Flight[] expected = new Flight[]{khvSvo2, khvSvo};
         assertArrayEquals(expected, actual);
     }
 
