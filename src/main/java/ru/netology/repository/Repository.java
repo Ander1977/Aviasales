@@ -2,7 +2,6 @@ package ru.netology.repository;
 
 import ru.netology.domain.Flight;
 
-import java.util.Arrays;
 
 public class Repository {
     private Flight[] flights = new Flight[0];
@@ -17,7 +16,6 @@ public class Repository {
     }
 
     public Flight[] findAll(){
-        Arrays.sort(flights);
         return flights;
     }
 

@@ -3,6 +3,8 @@ package ru.netology.manager;
 import ru.netology.domain.Flight;
 import ru.netology.repository.Repository;
 
+import java.util.Arrays;
+
 public class Manager {
     private Repository repository;
 
@@ -20,6 +22,7 @@ public class Manager {
                 result = tmp;
             }
         }
+        Arrays.sort(result);
         return result;
     }
 }
