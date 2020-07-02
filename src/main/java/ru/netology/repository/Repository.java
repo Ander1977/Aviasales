@@ -2,7 +2,6 @@ package ru.netology.repository;
 
 import ru.netology.domain.Flight;
 
-import java.util.Arrays;
 
 public class Repository {
     private Flight[] flights = new Flight[0];
