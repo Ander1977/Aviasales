@@ -28,17 +28,17 @@ class RepositoryTest {
     @Test
     public void shouldFindAll() {
         Flight[] actual = repository.findAll();
-        Flight[] expected = new Flight[]{sipDme, ledAaq, khvSvo, svoSin, dpsKhv, khvSvo2};
+        Flight[] expected = new Flight[]{khvSvo, sipDme, svoSin, khvSvo2, dpsKhv, ledAaq};
         assertArrayEquals(expected, actual);
 
     }
 
     @Test
     public void shouldRemoveById() {
-        int idToRemove = 3;
+        int idToRemove = 4;
         repository.removeById(idToRemove);
         Flight[] actual = repository.findAll();
-        Flight[] expected = new Flight[]{sipDme, ledAaq, khvSvo, dpsKhv, khvSvo2};
+        Flight[] expected = new Flight[]{khvSvo, sipDme, svoSin, dpsKhv, ledAaq};
         assertArrayEquals(expected, actual);
     }
 }

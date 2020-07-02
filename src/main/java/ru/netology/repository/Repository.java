@@ -17,7 +17,6 @@ public class Repository {
     }
 
     public Flight[] findAll(){
-        Arrays.sort(flights);
         return flights;
     }
 

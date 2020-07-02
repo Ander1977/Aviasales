@@ -23,6 +23,7 @@ public class Manager {
                 result = tmp;
             }
         }
+        Arrays.sort(result);
         return result;
     }
 
